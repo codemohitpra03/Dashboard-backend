@@ -63,34 +63,34 @@ app.use(express.json())
 
 // Endpoint to get bar chart data
 app.get('/api/barchartdata', (req, res) => {
-  setTimeout(() => {
-    try {
-      if (!barChartData.length) {
-        throw new Error('No data available for the bar chart.');
-      }
-
-      res.status(200).json(barChartData);
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).json({ error: 'Internal Server Error' });
+  
+  try {
+    if (!barChartData.length) {
+      throw new Error('No data available for the bar chart.');
     }
-  },2000)
+
+    res.status(200).json(barChartData);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+  
 });
 
 // Endpoint to get pie chart data
 app.get('/api/piechartdata', (req, res) => {
-  setTimeout(() => {
-    try {
-      if (!pieChartData.length) {
-        throw new Error('No data available for the pie chart.');
-      }
-
-      res.json(pieChartData);
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).json({ error: 'Internal Server Error' });
+  
+  try {
+    if (!pieChartData.length) {
+      throw new Error('No data available for the pie chart.');
     }
-  },2000)
+
+    res.json(pieChartData);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+  
 });
 
 // Error handling middleware
